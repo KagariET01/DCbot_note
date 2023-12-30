@@ -22,10 +22,37 @@ async def on_ready():
 	game=discord.Game("小ㄌㄌ")#  設定現在ㄐㄐ人在玩甚麼
 	#discord.Status.<狀態>，可以是online,offline,idle,dnd,invisible
 	await DCbot_client.change_presence(status=discord.Status.dnd,activity=game)
-	print("以下是你能瀏覽的channel")
-	allc=DCbot_client.get_all_channels()#  獲取所有有權限瀏覽的頻道
-	for i in allc:
-		print("名稱:",i.name,"\t\tid:",i.id)
+	
+	ET01=DCbot_client.get_user(847702543664807958)
+	await ET01.send("hi")
+	print("以下是你能瀏覽的伺服器及人員")
+	for guild in DCbot_client.guilds:
+		print("伺服器名稱：",guild.name)
+		print("伺服器id：",guild.id)
+		print("伺服器擁有者：",guild.owner)
+		# print("伺服器成員：")
+		# for member in guild.members:
+		# 	print(member)
+		# print("伺服器頻道：")
+		# for channel in guild.channels:
+		# 	print(channel)
+		# print("伺服器角色：")
+		# for role in guild.roles:
+		# 	print(role)
+		# print("伺服器表情符號：")
+		# for emoji in guild.emojis:
+		# 	print(emoji)
+		# print("伺服器邀請列表：")
+		# for invite in await guild.invites():
+		# 	print(invite)
+		print("伺服器頻道列表：")
+		for channel in guild.channels:
+			if channel.category==None:
+				print("\t"+str(channel.id)+" ["+channel.name+"]")
+		for category in guild.categories:
+			print("\t"+str(category.id),category.name)
+			for channel in category.channels:
+				print("\t\t"+str(channel.id),"["+channel.name+"]")
 	# while True:
 	# 	print("DCbot > ",end="")
 	# 	msg=input()
@@ -66,16 +93,15 @@ async def on_message(message):
 		print("\t\t頻道id：",message.channel.id)
 		print("\t\t位於類別id：",message.channel.category_id)
 		print("\t使用者：")
-		print("\t\t使用者名稱：",message.author.name)
+		print("\t\t使用者名稱：",message.author)
 		print("\t\t使用者全域名稱：",message.author.global_name)
 		print("\t\t使用者伺服器內名稱：",message.author.nick)
 		print("\t\t雞雞人：",message.author.bot)
 		print("\t訊息為：\n===訊息開始===\n",message.content,"\n===訊息結束===\n")
-
 		#  print(message)
 
 
 DCbot_client.run(token)
 
 
-
+print(DCbot_client.guilds[0].name)
