@@ -30,7 +30,7 @@ DCbot_client=discord.Client(intents=intents)
 DCbot_client.run(token)# 連線
 ```
 
-# 請注意，每個fn都需要加await，且必須在機器人啟動時才能使用，例如
+# 請注意，每個fn好像都需要加await，且必須在機器人啟動時才能使用，例如
 ```py
 @DCbot_client.event
 async def on_ready():
