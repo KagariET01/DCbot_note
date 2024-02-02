@@ -29,7 +29,7 @@ async def on_ready():
 	for guild in DCbot_client.guilds:
 		print("伺服器名稱：",guild.name)
 		print("伺服器id：",guild.id)
-		print("伺服器擁有者：",guild.owner)
+		# print("伺服器擁有者：",guild.owner)
 		# print("伺服器成員：")
 		# for member in guild.members:
 		# 	print(member)
